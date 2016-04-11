@@ -1,0 +1,27 @@
+40 NW:
+ganze. ganze
+halbe. halbe halbe3
+viertel.. viertel. viertel viertel3 viertel5
+achtel.. achtel. achtel achtel3 achtel5
+16tel.. 16tel. 16tel 16tel3 16tel5
+32tel.. 32tel. 32tel 32tel
+
+
+ganze.3
+ganze3
+halbe..
+halbe..3
+halbe.3
+viertel..3
+viertel.3
+viertel..5
+viertel.5
+achtel..3
+achtel.3
+achtel..5
+achtel.5
+
+16tel..3
+16tel.3
+16tel..5
+16tel.5
