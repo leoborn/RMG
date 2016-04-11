@@ -6,7 +6,7 @@ It is able to create random melodies for which you numerically set the number of
 
 ### Structure ###
 
-I didn't change any significant parts yet, so it's quite unstructured at the moment. You'll find MIDI files for the piano in /MIDI, the output .txt and serialized files in /Output, and the source code in /src. There are furthermore some fragments of earlier experiments and documents regarding findings of and statistics on the project that are dispersed in /Algo and /Dokumente.
+I didn't change any significant parts yet, so it's quite unstructured at the moment. You'll find MIDI files for the piano in /MIDI/Klavier, the output .txt and serialized files in /Output, and the source code in /src. There are furthermore some fragments of earlier experiments and documents regarding findings of and statistics on the project that are dispersed in /Algo and /Dokumente.
 
 * Algo
 * Dokumente
