@@ -21,7 +21,9 @@ After compiling all the classes in /src, you can invoke the main program, Random
 From the help menu of RandomFibo_2 (_java RandomFibo_2 -help_):
 
 "You can use it in two ways:
+
 * Generate a melody without chords by executing the program with only one argument. This argument should be the number of notes you wish the melody to have. An example execution looks like this: _java RandomFibo 20_
+
 * Generate a melody with chords by providing two arguments. The first argument, "+Chords", is to indicate that you wish chords to be included. The second is again the number of total notes (including chords) you wish the melody to have. Be advised that you cannot decide where chords will be played. But maybe you will be able to spot the pattern by which they are generated? An example execution thus looks like this: _java RandomFibo +Chords 20_"
 
 ### Who do I talk to? ###
