@@ -227,11 +227,11 @@ public class RMG2 implements Notenmaterial{
 		}
 		
 		int number;
-		BufferedReader b = new BufferedReader(new FileReader("Material/zahl2.txt"));
+		BufferedReader b = new BufferedReader(new FileReader(".counter/zahl2.txt"));
 		try{ 
 			number = Integer.parseInt( b.readLine() );
 			number++;
-			BufferedWriter bw = new BufferedWriter(new FileWriter("Material/zahl2.txt"));
+			BufferedWriter bw = new BufferedWriter(new FileWriter(".counter/zahl2.txt"));
 			bw.write( ""+number );
 			bw.close();
 			Melodie random = new Melodie( noten, rhythmus );
@@ -300,11 +300,11 @@ public class RMG2 implements Notenmaterial{
 		}
 		
 		int number;
-		BufferedReader b = new BufferedReader(new FileReader("Material/zahlChord.txt"));
+		BufferedReader b = new BufferedReader(new FileReader(".counter/zahlChord.txt"));
 		try{ 
 			number = Integer.parseInt( b.readLine() );
 			number++;
-			BufferedWriter bw = new BufferedWriter(new FileWriter("Material/zahlChord.txt"));
+			BufferedWriter bw = new BufferedWriter(new FileWriter(".counter/zahlChord.txt"));
 			bw.write( ""+number );
 			bw.close();
 			Melodie random = new Melodie( noten, rhythmus );
