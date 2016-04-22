@@ -4,7 +4,7 @@ This is the _Random Music Generator_ (RMG), a project written in Java to create 
 
 It is able to create random melodies for which you numerically set the number of notes to contain (e.g. 20). Optionally, it will also play chords in a not-so-random fashion. It outputs the notes and note values on the shell and saves it as a .txt file every time you use it alongside a serialized version which you can play back later using the MelGetter class. Note that the musical notation and many of the directories and/or documents are in German; I plan on changing it to English at some point, though.
 
-The whole premise of the project is heavily based on Goldbach's conjecture (https://en.wikipedia.org/wiki/Goldbach%27s_conjecture) and it basically works by assigning each note an even integer, and each note value a prime number. The idea is then to randomly pick two primes, add them to get the note to be played, and use one of the primes as its note value. RandomFibo is a manifestation of that approach. There is additionally RandomFibo_2 that picks the note value not from the prime numbers that make up a note, but instead randomly as well.
+The whole premise of the project is heavily based on Goldbach's conjecture (https://en.wikipedia.org/wiki/Goldbach%27s_conjecture) and it basically works by assigning each note an even integer, and each note value a prime number. The idea is then to randomly pick two primes, add them to get the note to be played, and use one of the primes as its note value. RMG1 is a manifestation of that approach. There is additionally RMG2 that picks the note value not from the prime numbers that make up a note, but instead randomly as well.
 
 In order distribute the notes a little bit better (i.e. so that it's a little bit nicer to listen to), I additionally did some tweaking and optimized the distributions towards a middle-note-centered range (since the larger an even number is, the more possible prime number tuples that add up to it there are, the numerically 'lower' notes were statistically less likely to occur than the numerically 'higher' notes; this is why I optimized it).
 
@@ -20,10 +20,10 @@ I didn't change any significant parts yet, so it's quite unstructured at the mom
 
 ### How to use it ###
 
-After compiling all the classes in /src, you can invoke the main program, RandomFibo_2 by simply typing _java RandomFibo_2 [someNumber]_
-(The difference between RandomFibo and RandomFibo_2 is that the latter also generates the note values for each note to be played randomly, whereas the former derives it from the composition of the note itself.)
+After compiling all the classes in /src, you can invoke the main program, RMG2 by simply typing _java RMG2 [someNumber]_
+(The difference between RMG1 and RMG2 is that the latter also generates the note values for each note to be played randomly, whereas the former derives it from the composition of the note itself.)
 
-From the help menu of RandomFibo_2 (_java RandomFibo_2 -help_):
+From the help menu of RMG2 (_java RMG2 -help_):
 
 "You can use it in two ways:
 
