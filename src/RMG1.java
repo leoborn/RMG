@@ -7,7 +7,7 @@ import java.util.HashMap;
 //Implementiert einen zufallsbasierten Kompositionsalgorithmus, der eine Melodie vorgegebener Laenge (Anzahl Noten) generiert
 //Jede Note wird aus zwei Primzahlen, die addiert eine gerade Zahl ergeben, ermittelt.
 //Die erste dieser Primzahlen ist der Notenwert.
-public class RandomFibo implements Notenmaterial{
+public class RMG1 implements Notenmaterial{
 	
 	//Zuordnung von geraden Zahlen auf Noten
 	public static Map<Integer, Note> notenzahlen = new HashMap<Integer, Note>();
@@ -323,12 +323,12 @@ public class RandomFibo implements Notenmaterial{
 			System.out.println("----------------------------------------------");
 			System.out.println("");
 			System.out.println("You can use it in two ways:\n1. Generate a melody without chords by executing the program with only one argument.\n   This argument should be the number of notes you wish the melody to have.");
-			System.out.println("   An example execution looks like this: java RandomFibo 20");
+			System.out.println("   An example execution looks like this: java RMG1 20");
 			System.out.println("");
 			System.out.println("2. Generate a melody with chords by providing two arguments. The first argument, \"+Chords\", is to indicate that you wish chords to be included.");
 			System.out.println("   The second is again the number of total notes (including chords) you wish the melody to have.");
 			System.out.println("   Be advised that you cannot decide where chords will be played. But maybe you will be able to spot the pattern by which they are generated?");
-			System.out.println("   An example execution thus looks like this: java RandomFibo +Chords 20");
+			System.out.println("   An example execution thus looks like this: java RMG1 +Chords 20");
 		}
 		else if( args.length == 1 ){
 			randomisierung( Integer.parseInt( args[0] ) );
