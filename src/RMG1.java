@@ -317,7 +317,7 @@ public class RMG1 implements Notenmaterial{
 	
 	public static void main( String[] args ) throws MidiUnavailableException, 
 	InvalidMidiDataException, IOException {
-		if( args.length == 1 && args[0].matches( "-help" ) ){
+		if( args.length == 1 && ( args[0].matches( "-help" ) || args[0].matches( "--help" ) || args[0].matches( "-h" ) ) ){
 			System.out.println("");
 			System.out.println( "Welcome to the Random Melody Generator (RMG)" );
 			System.out.println("----------------------------------------------");
