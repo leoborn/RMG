@@ -8,74 +8,45 @@ public class Note implements Serializable, Notenmaterial{
 	
 	private final String name;
 	private final int oktave;
-	private String instrument;
 	protected String pathToFile;
 	
-	public Note( String name, int oktave, String instrument ) throws IllegalArgumentException {
-		if( Arrays.asList( zulnamen ).contains( name ) && Arrays.asList( zulinstrumente ).contains( instrument ) ) {
+	public Note( String name, int oktave ) throws IllegalArgumentException {
+		if( Arrays.asList( zulnamen ).contains( name ) ) {
 			if( oktave >= 0 && oktave <= 8 ){
 				this.name = name;
 				this.oktave = oktave;
-				this.instrument = instrument;
-				//this.pathToFile = "/Users/leoborn/Desktop/Noten/MIDI/" + instrument + "/" + name + oktave + ".mid";
-                this.pathToFile = "../MIDI/" + instrument + "/" + name + oktave + ".mid";
+                this.pathToFile = "../MIDI/Klavier/" + name + oktave + ".mid";
 			}
 			else{
 				throw new IllegalArgumentException("Diese Note kann auf einem Instrument nicht gespielt werden.");
 			}
 		}
-		else if( namensmap.containsKey(name) && Arrays.asList( zulinstrumente ).contains( instrument ) ){
+		else if( namensmap.containsKey(name) ){
 			String neuname = namensmap.get(name);
 			this.oktave = oktave;
-			this.instrument = instrument;
 			this.name = name;
 			if( name.equals("ces") ){
-				this.pathToFile = "../MIDI/" + instrument + "/" + neuname + (oktave - 1) + ".mid";
+				this.pathToFile = "../MIDI/Klavier/" + neuname + (oktave - 1) + ".mid";
 			}
 			else if( name.equals("his") ){
-				this.pathToFile = "../MIDI/" + instrument + "/" + neuname + (oktave + 1) + ".mid";
+				this.pathToFile = "../MIDI/Klavier/" + neuname + (oktave + 1) + ".mid";
 			}
 			else{
-				this.pathToFile = "../MIDI/" + instrument + "/" + neuname + oktave + ".mid";
+				this.pathToFile = "../MIDI/Klavier/" + neuname + oktave + ".mid";
 			}
 		}
 		else{
-			throw new IllegalArgumentException("Es muessen ein korrekter Notenname "+
-												"(dt. Denotation, Kleinschrift) und ein korrektes Instrument angegeben werden.");
+			throw new IllegalArgumentException("Es muss ein korrekter Notenname "+
+												"(dt. Denotation, Kleinschrift) angegeben werden.");
 		}
 	}
 	
-	public Note( String name, int oktave ){
-		this( name, oktave, "Klavier" );
-	}
-
 	public String getName(){
 		return name;
 	}
 	
 	public int getOktave(){
 		return oktave;
-	}
-	
-	public String getInstrument(){
-		return instrument;
-	}
-	
-	public void setInstrument( String instrument ) throws IllegalArgumentException {
-		if( Arrays.asList( zulinstrumente ).contains( instrument ) ){
-			if( namensmap.containsKey(this.getName()) ){
-				String neuname = namensmap.get(this.getName());
-				this.instrument = instrument;
-				this.setPathToFile("../MIDI/" + instrument + "/" + neuname + this.getOktave() + ".mid");
-			}
-			else{
-				this.instrument = instrument;
-				this.setPathToFile("../MIDI/" + instrument + "/" + this.toString() + ".mid");
-			}
-		}
-		else{
-			throw new IllegalArgumentException("Das Instrument gibt es nicht.");
-		}
 	}
 	
 	public String getPathToFile(){
@@ -90,7 +61,7 @@ public class Note implements Serializable, Notenmaterial{
 		if( i < 0 ){
 			return this;
 		}
-		else if( this.getInstrument().equals("Klavier") ){
+		else{
 			int altOktave = this.getOktave();
 			String neuname = this.getName();
 			if(	namensmap.containsKey(neuname) ){
@@ -106,32 +77,9 @@ public class Note implements Serializable, Notenmaterial{
 				return this;
 			}
 			else{
-				Note transNote = new Note( nname1, altOktave, "Klavier" );
+				Note transNote = new Note( nname1, altOktave );
 				return transNote;
 			}
-		}
-		else if( this.getInstrument().equals("Gitarre") ){
-			int altOktave = this.getOktave();
-			String neuname = this.getName();
-			if(	namensmap.containsKey(neuname) ){
-				neuname = namensmap.get(neuname);
-			}
-			int altPos = Arrays.asList(zulnamen).indexOf(neuname);
-			if( (altPos + i) > 11 ){
-				altOktave++;
-			}
-			int pos = (altPos + 60 + i)%12;
-			String nname1 = zulnamen[pos];
-			if( altOktave == 6 && (!nname1.equals("c") || !nname1.equals("cis") || !nname1.equals("d") || !nname1.equals("dis") || !nname1.equals("e")) ){
-				return this;
-			}
-			else{
-				Note transNote = new Note( nname1, altOktave, "Gitarre" );
-				return transNote;
-			}
-		}
-		else{
-			return this;
 		}
 	}
 	
@@ -139,7 +87,7 @@ public class Note implements Serializable, Notenmaterial{
 		if( i < 0 ){
 			return this;
 		}
-		else if( this.getInstrument().equals("Klavier") ){
+		else{
 			int altOktave = this.getOktave();
 			String neuname = this.getName();
 			if(	namensmap.containsKey(neuname) ){
@@ -155,32 +103,9 @@ public class Note implements Serializable, Notenmaterial{
 				return this;
 			}
 			else{
-				Note transNote = new Note( nname1, altOktave, "Klavier" );
+				Note transNote = new Note( nname1, altOktave );
 				return transNote;
 			}
-		}
-		else if( this.getInstrument().equals("Gitarre") ){
-			int altOktave = this.getOktave();
-			String neuname = this.getName();
-			if(	namensmap.containsKey(neuname) ){
-				neuname = namensmap.get(neuname);
-			}
-			int altPos = Arrays.asList(zulnamen).indexOf(neuname);
-			if( (altPos - i) < 0 ){
-				altOktave--;
-			}
-			int pos = (altPos + 60 - i)%12;
-			String nname1 = zulnamen[pos];
-			if( altOktave < 2 ){
-				return this;
-			}
-			else{
-				Note transNote = new Note( nname1, altOktave, "Gitarre" );
-				return transNote;
-			}
-		}
-		else{
-			return this;
 		}
 	}
 	
@@ -258,82 +183,6 @@ public class Note implements Serializable, Notenmaterial{
         }
 	}
 	
-	public void playWith( String instrument ) throws MidiUnavailableException, InvalidMidiDataException, IOException {
-		this.setInstrument(instrument);
-		File midiFile = new File(this.pathToFile);
-		try{
-			Sequencer sequencer = MidiSystem.getSequencer();
-			Sequence mySeq = MidiSystem.getSequence(midiFile);
-            sequencer.setSequence(mySeq);
-            sequencer.open();
-            sequencer.start();
-            while( true ){
-                if( sequencer.isRunning() ){
-                    try{
-                        Thread.sleep(1000);
-                    }
-					catch( InterruptedException ignore ){
-                        break;
-                    }
-                }
-				else{
-                    break;
-                }
-            }
-            sequencer.stop();
-            sequencer.close();
-        }
-		catch( MidiUnavailableException mue ){
-			System.out.println("Midi device ist nicht verfuegbar.");
-		}
-		catch( InvalidMidiDataException imde ){
-            System.out.println("Midi Daten sind ungueltig.");
-        }
-		catch( IOException ioe ){
-            System.out.println("I/O Error! Da keine MIDI-Datei existiert, kann diese Note auf diesem Instrument nicht gespielt werden.");
-        }
-	}
-	
-	public void playWith( String instrument, long ende ) throws MidiUnavailableException, InvalidMidiDataException, IOException{
-		this.setInstrument(instrument);
-		File midiFile = new File(this.pathToFile);
-		try{
-			Sequencer sequencer = MidiSystem.getSequencer();
-			Sequence mySeq = MidiSystem.getSequence(midiFile);
-            sequencer.setSequence(mySeq);
-            sequencer.open();
-            sequencer.start();
-			
-			long erg = sequencer.getTickPosition();
-            while( erg < ende ){
-                if( sequencer.isRunning() ){
-                    try{
-                        Thread.sleep(3, 12500);
-						erg = sequencer.getTickPosition();
-                    }
-					catch( InterruptedException ignore ){
-                        break;
-                    }
-                }
-				else{
-                    break;
-                }
-            }
-            sequencer.stop();
-            sequencer.close();
-        }
-		catch( MidiUnavailableException mue ){
-			System.out.println("Midi device ist nicht verfuegbar.");
-		}
-		catch( InvalidMidiDataException imde ){
-            System.out.println("Midi Daten sind ungueltig.");
-        }
-		catch( IOException ioe ){
-			ioe.printStackTrace();
-            System.out.println("I/O Error! Da keine MIDI-Datei existiert, kann diese Note auf diesem Instrument nicht gespielt werden.");
-        }
-	}
-	
 	@Override
 	public String toString(){
 		return this.getName() + this.getOktave();
@@ -343,7 +192,6 @@ public class Note implements Serializable, Notenmaterial{
 	public int hashCode(){
 		int result = 42;
 		result = 31 * result + this.getName().hashCode();
-		result = 31 * result + this.getInstrument().hashCode();
 		result = 31 * result * this.getOktave();
 		return result;
 	}
@@ -353,7 +201,7 @@ public class Note implements Serializable, Notenmaterial{
 		boolean erg = false;
 		if( o instanceof Note ){
 			Note neu = (Note) o;
-			if( this.getName().equals(neu.getName()) && this.getOktave() == neu.getOktave() && this.getInstrument().equals(neu.getInstrument())){
+			if( this.getName().equals(neu.getName()) && this.getOktave() == neu.getOktave() ){
 				erg = true;
 			}
 		}
