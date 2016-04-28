@@ -15,7 +15,7 @@ public class Note implements Serializable, Notenmaterial{
 			if( oktave >= 0 && oktave <= 8 ){
 				this.name = name;
 				this.oktave = oktave;
-                this.pathToFile = "../MIDI/Klavier/" + name + oktave + ".mid";
+                this.pathToFile = "../MIDI/" + name + oktave + ".mid";
 			}
 			else{
 				throw new IllegalArgumentException("Diese Note kann auf einem Instrument nicht gespielt werden.");
@@ -26,13 +26,13 @@ public class Note implements Serializable, Notenmaterial{
 			this.oktave = oktave;
 			this.name = name;
 			if( name.equals("ces") ){
-				this.pathToFile = "../MIDI/Klavier/" + neuname + (oktave - 1) + ".mid";
+				this.pathToFile = "../MIDI/" + neuname + (oktave - 1) + ".mid";
 			}
 			else if( name.equals("his") ){
-				this.pathToFile = "../MIDI/Klavier/" + neuname + (oktave + 1) + ".mid";
+				this.pathToFile = "../MIDI/" + neuname + (oktave + 1) + ".mid";
 			}
 			else{
-				this.pathToFile = "../MIDI/Klavier/" + neuname + oktave + ".mid";
+				this.pathToFile = "../MIDI/" + neuname + oktave + ".mid";
 			}
 		}
 		else{
