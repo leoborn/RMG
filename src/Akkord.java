@@ -7,8 +7,8 @@ abstract class Akkord extends Note{
 	private final Note[] noten;
 	protected String chordName;
 	
-	public Akkord( String name, int oktave, String instrument, Note[] noten ) throws IllegalArgumentException {
-		super( cleanName(name), oktave, instrument );
+	public Akkord( String name, int oktave, Note[] noten ) throws IllegalArgumentException {
+		super( cleanName(name), oktave );
 		boolean erg = true;
 		for( Note n : noten ){
 			if( n instanceof Akkord ){
@@ -24,10 +24,6 @@ abstract class Akkord extends Note{
 		else{
 			throw new IllegalArgumentException("Ein Akkord darf keinen Akkord enthalten.");
 		}
-	}
-	
-	public Akkord( String name, int oktave, Note[] noten ){
-		this( name, oktave, "Klavier", noten );
 	}
 	
 	public static String cleanName( String n ){
@@ -69,17 +65,6 @@ abstract class Akkord extends Note{
 	
 	public void setChordName( String cname ){
 		this.chordName = cname;
-	}
-	
-	public String getInstrument(){
-		return super.getInstrument();
-	}
-	
-	@Override
-	public void setInstrument( String instrument ){
-		for( Note n : this.noten ){
-			n.setInstrument( instrument );
-		}
 	}
 	
 	public String getPathToFile(){
@@ -132,11 +117,5 @@ abstract class Akkord extends Note{
 	@Override
 	public abstract void play( long ende ) throws MidiUnavailableException, InvalidMidiDataException, IOException;
 	
-	@Override
-	public abstract void playWith( String instrument ) throws MidiUnavailableException, InvalidMidiDataException, IOException;
-	
-	@Override
-	public abstract void playWith( String instrument, long ende ) throws MidiUnavailableException, InvalidMidiDataException, IOException;
-
 	public abstract boolean equals( Object o );
 }

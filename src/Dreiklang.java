@@ -4,22 +4,12 @@ import java.util.Arrays;
 
 public class Dreiklang extends Akkord{
 	
-	public Dreiklang( String name, int oktave, String instrument, Note[] noten ){
-		super( name, oktave, instrument, checkNoten(noten) );
-	}
-	
 	public Dreiklang( String name, int oktave, Note[] noten ){
-		super( name, oktave, "Klavier", checkNoten(noten) );
-	}
-	
-	public Dreiklang( String instrument, Note n ){
-		super( n.getName(), n.getOktave(), instrument, constructArray( n ) );
-		String notenname = n.getName();
-		setChordName( n.getName() + "-Aug" );
+		super( name, oktave, checkNoten(noten) );
 	}
 	
 	public Dreiklang( Note n ){
-		super( n.getName(), n.getOktave(), "Klavier", constructArray( n ) );
+		super( n.getName(), n.getOktave(), constructArray( n ) );
 		String notenname = n.getName();
 		setChordName( n.getName() + "-Aug" );
 	}
@@ -47,14 +37,6 @@ public class Dreiklang extends Akkord{
 	
 	public int getOktave(){
 		return super.getOktave();
-	}
-	
-	public String getInstrument(){
-		return super.getInstrument();
-	}
-	
-	public void setInstrument( String instrument ){
-		super.setInstrument( instrument );
 	}
 	
 	public String getPathToFile(){
@@ -282,137 +264,6 @@ public class Dreiklang extends Akkord{
 	
 	@Override
 	public void play( long ende ) throws MidiUnavailableException, InvalidMidiDataException, IOException{
-		Note n1 = this.getNoten()[0];
-		Note n2 = this.getNoten()[1];
-		Note n3 = this.getNoten()[2];
-		File midiFile1 = new File(n1.getPathToFile());
-		File midiFile2 = new File(n2.getPathToFile());
-		File midiFile3 = new File(n3.getPathToFile());
-		try{
-			Sequencer sequencer1 = MidiSystem.getSequencer();
-			Sequence mySeq1 = MidiSystem.getSequence(midiFile1);
-			
-			Sequencer sequencer2 = MidiSystem.getSequencer();
-			Sequence mySeq2 = MidiSystem.getSequence(midiFile2);
-			
-			Sequencer sequencer3 = MidiSystem.getSequencer();
-			Sequence mySeq3 = MidiSystem.getSequence(midiFile3);
-			
-            sequencer1.setSequence(mySeq1);
-            sequencer1.open();
-            sequencer1.start();
-			
-			sequencer2.setSequence(mySeq2);
-            sequencer2.open();
-            sequencer2.start();
-			
-			sequencer3.setSequence(mySeq3);
-            sequencer3.open();
-            sequencer3.start();
-			
-			long erg = sequencer1.getTickPosition();
-            while( erg < ende ){
-                if( sequencer1.isRunning() && sequencer2.isRunning() && sequencer3.isRunning() ){
-                    try{
-                        Thread.sleep(3, 12500);
-						erg = sequencer1.getTickPosition();
-                    }
-					catch( InterruptedException ignore ){
-                        break;
-                    }
-                }
-				else{
-                    break;
-                }
-            }
-            sequencer1.stop();
-            sequencer1.close();
-			
-			sequencer2.stop();
-            sequencer2.close();
-			
-			sequencer3.stop();
-            sequencer3.close();
-        }
-		catch( MidiUnavailableException mue ){
-			System.out.println("Midi device ist nicht verfuegbar.");
-		}
-		catch( InvalidMidiDataException imde ){
-            System.out.println("Midi Daten sind ungueltig.");
-        }
-		catch( IOException ioe ){
-			ioe.printStackTrace();
-            System.out.println("I/O Error!");
-        }
-	}
-	
-	@Override
-	public void playWith( String instrument ) throws MidiUnavailableException, InvalidMidiDataException, IOException {
-		this.setInstrument( instrument );
-		Note n1 = this.getNoten()[0];
-		Note n2 = this.getNoten()[1];
-		Note n3 = this.getNoten()[2];
-		File midiFile1 = new File(n1.getPathToFile());
-		File midiFile2 = new File(n2.getPathToFile());
-		File midiFile3 = new File(n3.getPathToFile());
-		try{
-			Sequencer sequencer1 = MidiSystem.getSequencer();
-			Sequence mySeq1 = MidiSystem.getSequence(midiFile1);
-			
-			Sequencer sequencer2 = MidiSystem.getSequencer();
-			Sequence mySeq2 = MidiSystem.getSequence(midiFile2);
-			
-			Sequencer sequencer3 = MidiSystem.getSequencer();
-			Sequence mySeq3 = MidiSystem.getSequence(midiFile3);
-			
-            sequencer1.setSequence(mySeq1);
-            sequencer1.open();
-            sequencer1.start();
-			
-			sequencer2.setSequence(mySeq2);
-            sequencer2.open();
-            sequencer2.start();
-			
-			sequencer3.setSequence(mySeq3);
-            sequencer3.open();
-            sequencer3.start();
-            while( true ){
-                if( sequencer1.isRunning() && sequencer2.isRunning() && sequencer3.isRunning() ){
-                    try{
-                        Thread.sleep(5);
-                    }
-					catch( InterruptedException ignore ){
-                        break;
-                    }
-                }
-				else{
-                    break;
-                }
-            }
-            sequencer1.stop();
-            sequencer1.close();
-			
-			sequencer2.stop();
-            sequencer2.close();
-			
-			sequencer3.stop();
-            sequencer3.close();
-        }
-		catch( MidiUnavailableException mue ){
-			System.out.println("Midi device ist nicht verfuegbar.");
-		}
-		catch( InvalidMidiDataException imde ){
-            System.out.println("Midi Daten sind ungueltig.");
-        }
-		catch( IOException ioe ){
-			ioe.printStackTrace();
-            System.out.println("I/O Error!");
-        }
-	}
-	
-	@Override
-	public void playWith( String instrument, long ende ) throws MidiUnavailableException, InvalidMidiDataException, IOException{
-		this.setInstrument( instrument );
 		Note n1 = this.getNoten()[0];
 		Note n2 = this.getNoten()[1];
 		Note n3 = this.getNoten()[2];
