@@ -357,18 +357,6 @@ public class Melodie implements Serializable, Notenmaterial{
 		}
 	}
 	
-	public void playMelodieWith( String instrument ) throws MidiUnavailableException, InvalidMidiDataException, IOException {
-		for( int i = 0; i < this.noten.length; i++ ){
-			Note note = this.noten[i];
-			if( !Akkord.class.isAssignableFrom(note.getClass()) ){
-				note.setInstrument(instrument);
-			}
-			String rhy = this.getRhythmuswert(i);
-			long ende = (long) tickmap.get( rhy );
-			note.play( ende );
-		}
-	}
-	
 	public void saveTo( String datei ){
 		try{ 
 			BufferedWriter bw = new BufferedWriter(new FileWriter("../Output/" + datei + ".txt"));
