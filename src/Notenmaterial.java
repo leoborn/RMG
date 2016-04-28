@@ -27,9 +27,6 @@ interface Notenmaterial{
 		}
 	});
 	
-	//enthaelt die zulaessigen Instrumente
-	public String[] zulinstrumente = new String[]{"Klavier", "Gitarre"};
-	
 	//die wichtigsten Noten
 	public Note a0 = new Note("a", 0);
 	public Note ais0 = new Note("ais", 0);
