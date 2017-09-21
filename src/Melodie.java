@@ -371,11 +371,11 @@ public class Melodie implements Serializable, Notenmaterial{
 	
 	public void saveTo( String datei ){
 		try{ 
-			BufferedWriter bw = new BufferedWriter(new FileWriter("../Output/" + datei + ".txt"));
+			BufferedWriter bw = new BufferedWriter(new FileWriter("../.output/" + datei + ".txt"));
 			bw.write( this.toString() );
 			bw.close();
 			try{
-				FileOutputStream fileOut = new FileOutputStream("../Output/" + datei + ".ser");
+				FileOutputStream fileOut = new FileOutputStream("../.output/" + datei + ".ser");
 				ObjectOutputStream out = new ObjectOutputStream( fileOut );
 				out.writeObject( this );
 				out.close();
