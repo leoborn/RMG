@@ -10,12 +10,12 @@ In order distribute the notes a little bit better (i.e. so that it's a little bi
 
 ### Structure ###
 
-I didn't change any significant parts yet, so it's quite unstructured at the moment. You'll find MIDI files for the piano in /MIDI/Klavier, the output .txt and serialized files in /Output, and the source code in /src. There are furthermore some fragments of earlier experiments and documents regarding findings of and statistics on the project that are dispersed in /Algo and /Dokumente.
+I didn't change any significant parts yet, so it's quite unstructured at the moment. You'll find MIDI files for the piano in /MIDI/Klavier, some sample output .txt and serialized files in sample_output/, and the source code in /src. There are furthermore some fragments of earlier experiments and documents regarding findings of and statistics on the project that are dispersed in /Algo and /Dokumente.
 
 * Algo
 * Dokumente
 * MIDI
-* Output
+* sample_output
 * src
 
 ### How to use it ###
