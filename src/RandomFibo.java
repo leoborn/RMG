@@ -224,11 +224,11 @@ public class RandomFibo implements Notenmaterial{
 		}
 		
 		int number;
-		BufferedReader b = new BufferedReader(new FileReader("Material/zahl.txt"));
+		BufferedReader b = new BufferedReader(new FileReader("../.material/zahl.txt"));
 		try{ 
 			number = Integer.parseInt( b.readLine() );
 			number++;
-			BufferedWriter bw = new BufferedWriter(new FileWriter("Material/zahl.txt"));
+			BufferedWriter bw = new BufferedWriter(new FileWriter("../.material/zahl.txt"));
 			bw.write( ""+number );
 			bw.close();
 			Melodie random = new Melodie( noten, rhythmus );
@@ -297,11 +297,11 @@ public class RandomFibo implements Notenmaterial{
 		}
 		
 		int number;
-		BufferedReader b = new BufferedReader(new FileReader("Material/zahlChord.txt"));
+		BufferedReader b = new BufferedReader(new FileReader("../.material/zahlChord.txt"));
 		try{ 
 			number = Integer.parseInt( b.readLine() );
 			number++;
-			BufferedWriter bw = new BufferedWriter(new FileWriter("Material/zahlChord.txt"));
+			BufferedWriter bw = new BufferedWriter(new FileWriter("../.material/zahlChord.txt"));
 			bw.write( ""+number );
 			bw.close();
 			Melodie random = new Melodie( noten, rhythmus );

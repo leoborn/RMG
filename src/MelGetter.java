@@ -6,7 +6,7 @@ public class MelGetter implements Notenmaterial{
 	public static Melodie getMel( int i ){
 		Melodie m = null;
 		try{
-			FileInputStream fileIn = new FileInputStream("../Output/RandomMel"+i+".ser");
+			FileInputStream fileIn = new FileInputStream("../.output/RandomMel"+i+".ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			m = (Melodie) in.readObject();
 			in.close();
